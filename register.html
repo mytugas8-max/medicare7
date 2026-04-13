@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pendaftaran Pasien EMR</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-wrap">
+    <div class="card card-small">
+    <h1>Pendaftaran Pasien</h1>
+    <p>Lengkapi data pasien untuk membuat akun EMR</p>
+    <form id="registerForm" action="index.html">
+      <label for="nama">Nama Lengkap</label>
+      <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap" required>
+
+      <label for="nik">NIK</label>
+      <input type="text" id="nik" name="nik" placeholder="Masukkan NIK" required>
+
+      <label for="alamat">Alamat</label>
+      <textarea id="alamat" name="alamat" placeholder="Masukkan alamat lengkap" required></textarea>
+
+      <label for="tanggal-lahir">Tanggal Lahir</label>
+      <input type="date" id="tanggal-lahir" name="tanggal_lahir" required>
+
+      <label for="jenis-kelamin">Jenis Kelamin</label>
+      <select id="jenis-kelamin" name="jenis_kelamin" required>
+        <option value="">Pilih jenis kelamin</option>
+        <option value="laki-laki">Laki-laki</option>
+        <option value="perempuan">Perempuan</option>
+      </select>
+
+      <label for="usia">Usia</label>
+      <input type="number" id="usia" name="usia" placeholder="Masukkan usia" min="0" required>
+
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" placeholder="Buat username" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Buat password" required>
+
+      <button class="button-full" type="submit">Daftar</button>
+    </form>
+    <div class="footer-links">
+      Sudah punya akun? <a href="index.html">Kembali ke Login</a>
+    </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", function () {
+      var patientData = {
+        nama: document.getElementById("nama").value,
+        nik: document.getElementById("nik").value,
+        alamat: document.getElementById("alamat").value,
+        tanggalLahir: document.getElementById("tanggal-lahir").value,
+        jenisKelamin: document.getElementById("jenis-kelamin").value,
+        usia: document.getElementById("usia").value,
+        username: document.getElementById("username").value
+      };
+
+      localStorage.setItem("emrPatientData", JSON.stringify(patientData));
+    });
+  </script>
+</body>
+</html>

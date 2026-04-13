@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking Poli EMR</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="brand">EMR Pasien</div>
+      <div class="nav-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="profil.html">Profil</a>
+        <a href="booking.html">Booking</a>
+        <a href="riwayat.html">Riwayat</a>
+        <a href="emr.html">EMR</a>
+        <a href="index.html">Logout</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+    <div class="card card-small">
+      <h1>Booking Poli</h1>
+      <p>Pilih poli, dokter, tanggal, dan jam pemeriksaan Anda.</p>
+
+      <form id="bookingForm" action="success.html">
+        <label for="poli">Pilihan Poli</label>
+        <select id="poli" name="poli" required>
+          <option value="">Pilih poli</option>
+          <option value="Poli Umum">Poli Umum</option>
+          <option value="Poli Anak">Poli Anak</option>
+          <option value="Poli Gigi">Poli Gigi</option>
+          <option value="Poli Penyakit Dalam">Poli Penyakit Dalam</option>
+        </select>
+
+        <label for="dokter">Pilihan Dokter</label>
+        <select id="dokter" name="dokter" required>
+          <option value="">Pilih dokter</option>
+          <option value="dr. Andi Pratama">dr. Andi Pratama</option>
+          <option value="dr. Siti Maharani">dr. Siti Maharani</option>
+          <option value="dr. Rina Lestari">dr. Rina Lestari</option>
+          <option value="dr. Bambang Saputra">dr. Bambang Saputra</option>
+        </select>
+
+        <label for="tanggal">Tanggal</label>
+        <input type="date" id="tanggal" name="tanggal" required>
+
+        <label for="jam">Jam</label>
+        <input type="time" id="jam" name="jam" required>
+
+        <div class="button-row">
+          <a class="button button-muted" href="dashboard.html">Kembali</a>
+          <button type="submit">Konfirmasi</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+    document.getElementById("bookingForm").addEventListener("submit", function () {
+      var bookingData = {
+        poli: document.getElementById("poli").value,
+        dokter: document.getElementById("dokter").value,
+        tanggal: document.getElementById("tanggal").value,
+        jam: document.getElementById("jam").value
+      };
+
+      localStorage.setItem("emrLastBooking", JSON.stringify(bookingData));
+    });
+  </script>
+</body>
+</html>

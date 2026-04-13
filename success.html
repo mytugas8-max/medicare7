@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking Berhasil</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="brand">EMR Pasien</div>
+      <div class="nav-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="profil.html">Profil</a>
+        <a href="booking.html">Booking</a>
+        <a href="riwayat.html">Riwayat</a>
+        <a href="emr.html">EMR</a>
+        <a href="index.html">Logout</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-wrap center-content">
+    <div class="success-card">
+      <h1>Booking Berhasil</h1>
+      <p>Data booking poli Anda telah berhasil dikonfirmasi. Silakan kembali ke dashboard untuk melihat menu lainnya.</p>
+      <div class="booking-summary">
+        <p><strong>Poli:</strong> <span id="summaryPoli">Poli Umum</span></p>
+        <p><strong>Dokter:</strong> <span id="summaryDokter">dr. Andi Pratama</span></p>
+        <p><strong>Tanggal:</strong> <span id="summaryTanggal">10 April 2026</span></p>
+        <p><strong>Jam:</strong> <span id="summaryJam">09:00</span></p>
+      </div>
+      <a href="dashboard.html">Kembali ke Dashboard</a>
+    </div>
+  </div>
+  <script>
+    var bookingData = JSON.parse(localStorage.getItem("emrLastBooking"));
+
+    if (bookingData) {
+      document.getElementById("summaryPoli").textContent = bookingData.poli || "Poli Umum";
+      document.getElementById("summaryDokter").textContent = bookingData.dokter || "dr. Andi Pratama";
+      document.getElementById("summaryTanggal").textContent = bookingData.tanggal || "10 April 2026";
+      document.getElementById("summaryJam").textContent = bookingData.jam || "09:00";
+    }
+  </script>
+</body>
+</html>

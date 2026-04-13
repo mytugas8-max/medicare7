@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login EMR</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+  <div class="auth-card">
+    <h1>EMR Login</h1>
+    <p>Silakan masuk untuk mengakses sistem EMR</p>
+    <form id="loginForm" action="dashboard.html">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" placeholder="Masukkan username" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Masukkan password" required>
+
+      <button class="button-full" type="submit">Login</button>
+    </form>
+    <div class="register-link">
+      Belum punya akun? <a href="register.html">Daftar di sini</a>
+    </div>
+    <div class="hint">Demo sederhana: login akan langsung masuk ke dashboard.</div>
+  </div>
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function () {
+      localStorage.setItem("emrLoggedIn", "true");
+    });
+  </script>
+</body>
+</html>

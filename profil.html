@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil Pasien EMR</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="brand">EMR Pasien</div>
+      <div class="nav-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="profil.html">Profil</a>
+        <a href="booking.html">Booking</a>
+        <a href="riwayat.html">Riwayat</a>
+        <a href="emr.html">EMR</a>
+        <a href="index.html">Logout</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+    <div class="card card-medium">
+      <h1>Profil Pasien</h1>
+
+      <div class="data-item">
+        <span class="label">Nama</span>
+        <span id="namaValue" class="value">Budi Santoso</span>
+      </div>
+
+      <div class="data-item">
+        <span class="label">NIK</span>
+        <span id="nikValue" class="value">317xxxxxxxxxxxxx</span>
+      </div>
+
+      <div class="data-item">
+        <span class="label">Alamat</span>
+        <span id="alamatValue" class="value">Jl. Melati No. 10, Jakarta</span>
+      </div>
+
+      <div class="data-item">
+        <span class="label">Tanggal Lahir</span>
+        <span id="tanggalLahirValue" class="value">12 Januari 1995</span>
+      </div>
+
+      <div class="data-item">
+        <span class="label">Jenis Kelamin</span>
+        <span id="jenisKelaminValue" class="value">Laki-laki</span>
+      </div>
+
+      <div class="data-item">
+        <span class="label">Usia</span>
+        <span id="usiaValue" class="value">30 Tahun</span>
+      </div>
+
+      <a class="back-button" href="dashboard.html">Kembali ke Dashboard</a>
+    </div>
+  </div>
+  <script>
+    var patientData = JSON.parse(localStorage.getItem("emrPatientData"));
+
+    function formatTanggal(tanggal) {
+      if (!tanggal) {
+        return "";
+      }
+
+      var bulan = [
+        "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+        "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+      ];
+      var bagian = tanggal.split("-");
+
+      if (bagian.length !== 3) {
+        return tanggal;
+      }
+
+      return Number(bagian[2]) + " " + bulan[Number(bagian[1]) - 1] + " " + bagian[0];
+    }
+
+    function formatJenisKelamin(nilai) {
+      if (nilai === "laki-laki") {
+        return "Laki-laki";
+      }
+      if (nilai === "perempuan") {
+        return "Perempuan";
+      }
+      return nilai || "";
+    }
+
+    if (patientData) {
+      document.getElementById("namaValue").textContent = patientData.nama || "Budi Santoso";
+      document.getElementById("nikValue").textContent = patientData.nik || "317xxxxxxxxxxxxx";
+      document.getElementById("alamatValue").textContent = patientData.alamat || "Jl. Melati No. 10, Jakarta";
+      document.getElementById("tanggalLahirValue").textContent = formatTanggal(patientData.tanggalLahir) || "12 Januari 1995";
+      document.getElementById("jenisKelaminValue").textContent = formatJenisKelamin(patientData.jenisKelamin) || "Laki-laki";
+      document.getElementById("usiaValue").textContent = (patientData.usia ? patientData.usia + " Tahun" : "30 Tahun");
+    }
+  </script>
+</body>
+</html>

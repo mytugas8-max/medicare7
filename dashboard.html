@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard EMR Pasien</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="brand">EMR Pasien</div>
+      <div class="nav-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="profil.html">Profil</a>
+        <a href="booking.html">Booking</a>
+        <a href="riwayat.html">Riwayat</a>
+        <a href="emr.html">EMR</a>
+        <a href="index.html">Logout</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="hero">
+      <h1>Dashboard Pasien EMR</h1>
+      <p>Pilih menu utama untuk mengakses layanan dan data kesehatan Anda.</p>
+      <div id="welcomeNote" class="welcome-note">Selamat datang di portal pasien.</div>
+    </div>
+
+    <div class="menu-grid">
+      <a class="menu-card" href="profil.html">
+        <h2>Profil</h2>
+        <p>Lihat dan kelola data profil pasien.</p>
+      </a>
+
+      <a class="menu-card" href="booking.html">
+        <h2>Booking Poli</h2>
+        <p>Lakukan pendaftaran atau pemesanan jadwal poli.</p>
+      </a>
+
+      <a class="menu-card" href="riwayat.html">
+        <h2>Riwayat Appointment</h2>
+        <p>Lihat riwayat kunjungan dan janji temu Anda.</p>
+      </a>
+
+      <a class="menu-card" href="emr.html">
+        <h2>Rekam Medis (EMR)</h2>
+        <p>Akses ringkasan rekam medis pasien secara online.</p>
+      </a>
+    </div>
+  </div>
+  <script>
+    var patientData = JSON.parse(localStorage.getItem("emrPatientData"));
+    var welcomeNote = document.getElementById("welcomeNote");
+
+    if (patientData && patientData.nama) {
+      welcomeNote.textContent = "Selamat datang, " + patientData.nama + ". Silakan pilih menu yang ingin diakses.";
+    }
+  </script>
+</body>
+</html>
